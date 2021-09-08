@@ -9,6 +9,10 @@
     --lighter: #f8f9fa;
     --just-white: #ffffff;
     --just-black: #101010;
+    --javascript: #f7df1e;
+    --css: #3a97d0;
+    --html: #e96228;
+    --php: #5e76bf;
 }
 
 html{
