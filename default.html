@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <meta name="viewport" content="width=device-width, user.scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="description" content="Portafolio de Luis José Cruz Martínez">
+    <meta name="keywords" content="developer, desarrollador, web, programmer">
+    <meta name="author" content="Luis José Cruz"> 
+    <meta name="copyright" content="Luis Cruz 2021">
+    <meta name="robots" content="index/follow">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="refresh" content="3600">
+    <title>Luis Cruz</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;300;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/icons/favicon.svg" type="image/svg">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/tablet.css" media="(min-width: 768px)">
+    <link rel="stylesheet" href="css/desktop.css" media="(min-width: 1024px)">
+    <link rel="stylesheet" href="css/music.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">🏡</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div class="main-video">
+            <iframe id="iframe" width="100%" height="500" src="https://www.youtube-nocookie.com/embed/CTxh5G35Wuk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="container"></div>
+    </main>
+    
+    <footer>
+        <div class="footer__text">
+            <p>Copyright © Luis Cruz 2021</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+<style>
+    .main-video{
+        width: 60%;
+        margin: 50px auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .kard{
+        background: transparent;
+        width: 320px;
+    }
+</style>
+
+<!-- Clave Api Youtube: AIzaSyAGDU6cVsjwARnsVfeCAsuKToH-eQ-NEgY  -->
+<!-- https://www.googleapis.com/youtube/v3/search?key=[key]&channelId=[canalID]&part=snippet,id&order=date&maxResults=5 -->
+<!-- ID CHANNEL: UCqkxFr53JmfLi_NiteA8HHA -->
+
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous">
+</script>
+
+<script>
+    var nextPageToken = "";
+    // Resultados por pagina
+    var resPorPagina = 7;
+    // Paginas a mostrar
+    var paginas = 1;
+    var key = "AIzaSyAGDU6cVsjwARnsVfeCAsuKToH-eQ-NEgY";
+    var idCanal = "UCqkxFr53JmfLi_NiteA8HHA";
+    var url = "https://www.googleapis.com/youtube/v3/search?key=" + key + "&channelId=" + idCanal + "&part=snippet,id&order=date&maxResults=" + resPorPagina;
+    console.log(url);
+    $.getJSON(url, function (data) {
+    
+        for (var k in data.items) {
+            var tituloVideo = data.items[k]["snippet"].title;
+            var urlVideo = "https://www.youtube.com/watch?v=" + data.items[k]["id"].videoId;
+            var fechaVideo = data.items[k]["snippet"].publishedAt;
+            let img = data.items[k]['snippet']['thumbnails']['medium'].url;
+            
+            let title = tituloVideo.split(" | ");
+            title = title[0] + ". " + title[1];
+
+            let vdId = data.items[k]['id']['videoId'];
+
+            //console.log(k, data.items[k]["id"].videoId);
+
+            $(".container").append(`
+                <div class="kard" onclick="showVideo('${vdId}')">
+                    <img src=${img}>                    
+                </div>
+            `);
+        }
+    });
+
+    function showVideo(vdId) {
+        console.log(vdId);
+        let kard = $(".kard");
+        let iframe = $("#iframe");
+        let data = "?enablejsapi=1&autoplay=1&cc_load_policy=0&cc_lang_pref=&iv_load_policy=1&loop=0&modestbranding=0&rel=1&fs=1&playsinline=0&autohide=2&hl=es_ES&theme=dark&color=red&controls=1&";
+        let url = "https://www.youtube-nocookie.com/embed/"+vdId+data;
+        console.log(url);
+        iframe.attr("src", url);
+    };
+
+
+    // <div class="card-body">
+    //                     <h4 class="card-title">${title}</h4>
+    //                 </div>
+
+</script>
