@@ -42,7 +42,8 @@ header p{
     background: var(--primary);
     padding: 50px;
     border-radius: 5px;
-    box-shadow: -10px 8px 1px rgba(0,0,0,0.175);
+    box-shadow: -10px 10px 1px rgba(0,0,0,0.175);
+    transition: all 0.5s;
 }
 .bg-logo .logo{
     width: 100%;
@@ -50,11 +51,15 @@ header p{
     border-radius: 5px;
     margin-top: 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.175);
-    transition: filter 0.5s;
+    transition: all 0.5s;
 }
 .bg-logo .logo:hover{
     /* filter: grayscale(1); */
     filter: brightness(1.2);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+.bg-logo:hover{
+    box-shadow: -20px 20px 1px rgba(7, 60, 95, 0.5)
 }
 .cards_container_proyects{
     padding: 0 20px;

@@ -20,13 +20,10 @@
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/tablet.css" media="(min-width: 768px)">
     <link rel="stylesheet" href="css/desktop.css" media="(min-width: 1024px)">
-    <link rel="stylesheet" href="css/music.css">
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="index.html">🏡</a></li>
-        </ul>
+    <nav class="navbar" id="top">
+        <ul><li><a href="index.html">🏡</a></li></ul>
     </nav>
     <main>
         <div class="main-video">
@@ -34,7 +31,6 @@
         </div>
         <div class="container"></div>
     </main>
-    
     <footer>
         <div class="footer__text">
             <p>Copyright © Luis Cruz 2021</p>
@@ -44,17 +40,10 @@
 </html>
 
 <style>
-    .main-video{
-        width: 60%;
-        margin: 50px auto;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .kard{
-        background: transparent;
-        width: 320px;
-    }
+    html {scroll-behavior: smooth;}
+    .container{display: flex;align-items: center;justify-content: center;flex-wrap: wrap;}
+    .main-video{width: 60%;margin: 50px auto;display: flex;align-items: center;justify-content: center;box-shadow: 0px 4px 15px rgba(0,0,0,0.5);}
+    .kard{background: transparent;width: 320px;margin: 10px;box-shadow: -10px -10px 15px rgba(0,0,0,0.5);}
 </style>
 
 <!-- Clave Api Youtube: AIzaSyAGDU6cVsjwARnsVfeCAsuKToH-eQ-NEgY  -->
@@ -62,57 +51,45 @@
 <!-- ID CHANNEL: UCqkxFr53JmfLi_NiteA8HHA -->
 
 <script
-  src="https://code.jquery.com/jquery-3.6.0.min.js"
-  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-  crossorigin="anonymous">
-</script>
 
-<script>
-    var nextPageToken = "";
-    // Resultados por pagina
-    var resPorPagina = 7;
-    // Paginas a mostrar
-    var paginas = 1;
-    var key = "AIzaSyAGDU6cVsjwARnsVfeCAsuKToH-eQ-NEgY";
-    var idCanal = "UCqkxFr53JmfLi_NiteA8HHA";
-    var url = "https://www.googleapis.com/youtube/v3/search?key=" + key + "&channelId=" + idCanal + "&part=snippet,id&order=date&maxResults=" + resPorPagina;
+src="https://code.jquery.com/jquery-3.6.0.min.js"
+integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+crossorigin="anonymous">
+
+var nextPageToken = "";
+// Resultados por pagina
+var resPorPagina = 16;
+// Paginas a mostrar
+var paginas = 1;
+var key = "AIzaSyAGDU6cVsjwARnsVfeCAsuKToH-eQ-NEgY";
+var idCanal = "UCqkxFr53JmfLi_NiteA8HHA";
+var url = "https://www.googleapis.com/youtube/v3/search?key=" + key + "&channelId=" + idCanal + "&part=snippet,id&order=date&maxResults=" + resPorPagina;
+console.log(url);
+$.getJSON(url, function (data) {
+    for (var k in data.items) {
+        var tituloVideo = data.items[k]["snippet"].title;
+        var urlVideo = "https://www.youtube.com/watch?v=" + data.items[k]["id"].videoId;
+        var fechaVideo = data.items[k]["snippet"].publishedAt;
+        let img = data.items[k]['snippet']['thumbnails']['medium'].url;
+        let title = tituloVideo.split(" | ");
+        title = title[0] + ". " + title[1];
+        let vdId = data.items[k]['id']['videoId'];
+        $(".container").append(`
+            <a href="#top" class="kard" onclick="showVideo('${vdId}')">
+                <img src=${img}>                    
+            </a>
+        `);
+    }
+});
+
+function showVideo(vdId) {
+    console.log(vdId);
+    let kard = $(".kard");
+    let iframe = $("#iframe");
+    let data = "?enablejsapi=1&autoplay=1&cc_load_policy=0&cc_lang_pref=&iv_load_policy=1&loop=0&modestbranding=0&rel=1&fs=1&playsinline=0&autohide=2&hl=es_ES&theme=dark&color=red&controls=1&";
+    let url = "https://www.youtube-nocookie.com/embed/"+vdId+data;
     console.log(url);
-    $.getJSON(url, function (data) {
-    
-        for (var k in data.items) {
-            var tituloVideo = data.items[k]["snippet"].title;
-            var urlVideo = "https://www.youtube.com/watch?v=" + data.items[k]["id"].videoId;
-            var fechaVideo = data.items[k]["snippet"].publishedAt;
-            let img = data.items[k]['snippet']['thumbnails']['medium'].url;
-            
-            let title = tituloVideo.split(" | ");
-            title = title[0] + ". " + title[1];
-
-            let vdId = data.items[k]['id']['videoId'];
-
-            //console.log(k, data.items[k]["id"].videoId);
-
-            $(".container").append(`
-                <div class="kard" onclick="showVideo('${vdId}')">
-                    <img src=${img}>                    
-                </div>
-            `);
-        }
-    });
-
-    function showVideo(vdId) {
-        console.log(vdId);
-        let kard = $(".kard");
-        let iframe = $("#iframe");
-        let data = "?enablejsapi=1&autoplay=1&cc_load_policy=0&cc_lang_pref=&iv_load_policy=1&loop=0&modestbranding=0&rel=1&fs=1&playsinline=0&autohide=2&hl=es_ES&theme=dark&color=red&controls=1&";
-        let url = "https://www.youtube-nocookie.com/embed/"+vdId+data;
-        console.log(url);
-        iframe.attr("src", url);
-    };
-
-
-    // <div class="card-body">
-    //                     <h4 class="card-title">${title}</h4>
-    //                 </div>
+    iframe.attr("src", url);
+};
 
 </script>
