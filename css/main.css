@@ -179,6 +179,7 @@ header p::before{
     position: absolute;
     top: 50px;
     padding: 0 50px;
+    z-index: 2;
 }
 
 .navbar ul li{
@@ -534,7 +535,7 @@ footer{
     right: 30px;
     width: 50px;
     height: 50px;
-    padding: 10px;
+    padding: 15px;
     background: var(--just-white);
     border: 1px solid var(--just-white);
     border-radius: 25px;
