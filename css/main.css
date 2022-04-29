@@ -114,6 +114,37 @@ header{
     }
 }
 
+.tooltifix {
+    position: absolute;
+    top: 0;
+    left: -140px;
+    text-align: right;
+}
+
+.tooltifix ul {
+    list-style: none;
+}
+
+.tooltifix ul li {
+    margin: 50px 0;
+}
+
+.tooltifix ul li a{
+    text-decoration: none;
+    width: auto;
+    padding: 6px 10px;
+    background: white;
+    border-radius: 2px;
+    font-size: 1.4rem;
+    color: #101010;
+}
+
+.tooltifix ul li:nth-child(1) a { background-color: #0eddec; }
+.tooltifix ul li:nth-child(2) a { background-color: #b1df36; }
+.tooltifix ul li:nth-child(3) a { background-color: #f57913; }
+.tooltifix ul li:nth-child(4) a { background-color: #c78af0; }
+.tooltifix ul li:nth-child(5) a { background-color: #ffc400; }
+
 header .logo{
     width: 150px;
     margin-top: 20px;
@@ -201,6 +232,38 @@ header p::before{
     box-shadow: -4px 4px rgb(32 16 25);
     text-transform: uppercase;
     font-weight: 500;
+}
+
+nav ul li .start {
+    width: auto;
+    padding: 20px;
+    border-radius: 4px;
+    background: #1475c0;
+    margin-left: 20px;
+}
+
+nav ul li .start img {
+    width: 70px;
+    margin-right: 15px;
+    margin-top: 0;
+    margin-left: -50px;
+}
+
+.contact-link {
+    text-decoration: none;
+    position: absolute;
+    top: 45px;
+    right: 45px;
+    padding: 14px 20px; 
+    border: 1px solid transparent;
+    background-color: #452649;
+    color: white;
+    font-size: 1.8rem;
+    border-radius: 4px;
+    box-shadow: -2px 4px 12px rgba(0,0,0,0.125);
+    cursor: pointer;
+    z-index: 10;
+    display: none;
 }
 
 .description{
@@ -359,6 +422,10 @@ header p::before{
 
 .card__img.textract{
     background-image: url('../assets/images/06.jpg');
+}
+
+.card__img.sersetronica{
+    background-image: url('../assets/images/07.png');
 }
 
 .card__text{
