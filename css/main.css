@@ -35,8 +35,8 @@ body{
 
 header{
     width: 100%;
-    /* background: linear-gradient(180deg, var(--primary), var(--tertiary)); */
-    background-image: linear-gradient(to right bottom, #000000, #25131d, #3e1f3a, #4f3060, #52468d, #4b5daa, #3a75c6, #008ee0, #00a6e6, #00b9d4, #00c8b0, #35d382);
+    background: linear-gradient(180deg, var(--tertiary), var(--gainsboro));
+    /* background-image: linear-gradient(to right bottom, #000000, #25131d, #3e1f3a, #4f3060, #52468d, #4b5daa, #3a75c6, #008ee0, #00a6e6, #00b9d4, #00c8b0, #35d382); */
     padding: 20px;
     display: flex;
     align-items: center;
@@ -139,10 +139,10 @@ header{
     color: #101010;
 }
 
-.tooltifix ul li:nth-child(1) a { background-color: #0eddec; }
-.tooltifix ul li:nth-child(2) a { background-color: #b1df36; }
-.tooltifix ul li:nth-child(3) a { background-color: #f57913; }
-.tooltifix ul li:nth-child(4) a { background-color: #c78af0; }
+.tooltifix ul li:nth-child(1) a { background-color: #ff5353; }
+.tooltifix ul li:nth-child(2) a { background-color: #43ddff; }
+.tooltifix ul li:nth-child(3) a { background-color: #21e28c; }
+.tooltifix ul li:nth-child(4) a { background-color: #f679ff; }
 .tooltifix ul li:nth-child(5) a { background-color: #ffc400; }
 
 header .logo{
@@ -194,7 +194,7 @@ header p::before{
     border: 15px solid transparent;
     border-bottom: 15px solid var(--primary);
 }
-
+/* 
 .navbar{
     width: 100%;
     display: none;
@@ -247,8 +247,8 @@ nav ul li .start img {
     margin-right: 15px;
     margin-top: 0;
     margin-left: -50px;
-}
-
+} */
+/* 
 .contact-link {
     text-decoration: none;
     position: absolute;
@@ -264,6 +264,35 @@ nav ul li .start img {
     cursor: pointer;
     z-index: 10;
     display: none;
+} */
+
+.navbar {
+    width: 100%;
+    height: 60px;
+    background-color: var(--primary);
+    position: fixed;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 100px;
+}
+
+.navbar .logo {
+    font-size: 1.6rem;
+    color: var(--just-white);
+    padding-right: 24px;
+}
+
+.navbar ul li {
+    display: inline-block;
+}
+
+.navbar ul li a {
+    color: var(--cultured);
+    text-decoration: none;
+    padding: 0 12px;
+    font-size: 1.4rem;
 }
 
 .description{
