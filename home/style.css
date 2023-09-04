@@ -1,0 +1,98 @@
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+*,
+::after,
+::before {
+    font-size: 1.4rem;
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
+    font-family: inherit;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #121212;
+    padding: 0 60px;
+}
+
+header nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+}
+
+header nav ul li a {
+    display: inline-block;
+    color: #fff;
+    padding: 0px 12px;
+    text-decoration: none;
+    font-size: 1.6rem;
+}
+
+main {
+    padding-top: 60px;
+}
+
+.logo a{
+    display: inline-block;
+    text-decoration: none;
+    font-size: 2.4rem;
+    color: #fff;
+    font-family: 'Raleway', sans-serif;
+}
+
+.apps {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    padding: 40px;
+}
+
+.app {
+    display: block;
+    width: 200px;
+    height: 100px;
+    background-color: #fff;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.175);
+}
+
+.batatabit {
+    background: #f7931a;
+    color: #fff;
+}
+
+.gesproines {
+    background: #86c000;
+    color: #fff;
+}
+
+.sersetronica {
+    background: #0061a8;
+    color: #fff;
+}
+
+.luisjosecruz {
+    background: #212529;
+    color: #fff;
+}
